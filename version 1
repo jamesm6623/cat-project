@@ -1,0 +1,158 @@
+Project Story
+Motivation
+
+I wanted to build a smart litter box monitoring system that could automatically track a cat's litter box usage and help identify potential health issues.
+
+The initial idea was simple:
+
+Detect when a cat enters the litter box
+Take photos automatically
+Analyze the litter box contents using AI
+
+However, during development I encountered several practical engineering challenges that required multiple design iterations.
+
+Iteration 1: Basic Photo Capture System
+
+The first prototype simply captured an image whenever a litter box event occurred.
+
+Problems
+
+This approach generated many false records:
+
+Empty litter box images
+Camera noise
+Sensor misfires
+Repeated captures of the same scene
+
+As a result, visit counts became unreliable and AI analysis was frequently performed on irrelevant images.
+
+Lessons Learned
+
+A trigger alone is not sufficient.
+
+The system must first verify that a cat is actually present before recording an event.
+
+Iteration 2: YOLO-Based Cat Verification
+
+To reduce false positives, YOLOv8 was integrated into the system.
+
+Improvement
+
+Instead of immediately recording a visit:
+
+Capture an entry image
+Run YOLO detection
+Verify that a cat exists in the frame
+Record the visit only if a cat is detected
+Result
+
+This significantly reduced false records and improved the reliability of litter box statistics.
+
+Iteration 3: Duplicate Image Filtering
+
+After extended testing, another issue appeared.
+
+Many captured images were nearly identical.
+
+Examples:
+
+Cat remains stationary
+Camera view unchanged
+Multiple captures of the same litter box condition
+Improvement
+
+Image similarity comparison was added using:
+
+Histogram comparison
+Pixel difference analysis
+
+Images exceeding a similarity threshold are automatically discarded.
+
+Result
+
+Storage requirements were reduced and unnecessary AI requests were avoided.
+
+Iteration 4: AI Waste Analysis
+
+The next goal was to understand what was inside the litter box.
+
+Google Gemini Vision was integrated to analyze captured images.
+
+Problems
+
+The AI occasionally assumed that every image contained waste because the image came from a litter box system.
+
+Improvement
+
+Prompt engineering was introduced.
+
+The model is explicitly instructed to:
+
+Determine whether waste is actually present
+Identify non-waste objects
+Report uncertainty when visibility is poor
+Avoid making unsupported assumptions
+Result
+
+More reliable and interpretable analysis reports.
+
+Iteration 5: Health Trend Monitoring
+
+Single litter box visits provide limited information.
+
+A cat's health is often reflected in long-term behavioral changes.
+
+Improvement
+
+A local statistics engine was developed to store:
+
+Visit frequency
+Visit duration
+Daily activity history
+
+The system computes:
+
+24-hour activity summaries
+7-day health trends
+Long-term behavior changes
+Result
+
+The system evolved from event monitoring to behavioral monitoring.
+
+Iteration 6: Startup Optimization
+
+As more AI features were added, startup time increased significantly.
+
+Investigation revealed that YOLO was being loaded during program initialization.
+
+Problems
+Slow startup
+Web dashboard unavailable during model loading
+Poor user experience
+Improvement
+
+Several optimizations were introduced:
+
+Lazy YOLO loading
+Background model preloading
+Faster web server initialization
+Optional simulation mode
+Result
+
+The dashboard becomes available almost immediately while AI models continue loading in the background.
+
+Key Engineering Takeaways
+
+This project evolved from a simple camera-based prototype into a multi-stage AI monitoring system.
+
+The most important lesson was that building a reliable system required much more than simply connecting a camera to an AI model.
+
+Each iteration introduced new challenges involving:
+
+Computer vision
+Data quality
+AI reliability
+System performance
+User experience
+
+The final system reflects a continuous engineering process of identifying limitations, testing solutions, and refining the design.
