@@ -1,0 +1,73 @@
+## Project Evolution (V7 → V11.20)
+
+Since V7, Cat AI has evolved from a simple AI-powered cat stool classification application into a comprehensive intelligent cat health management platform.
+
+### V7
+- AI-based stool image classification
+- Health prediction using a deep learning model
+- Basic web interface
+- Health history recording
+
+### V8
+- Improved user interface and workflow
+- Enhanced visualization of prediction results
+- Better history management
+- More stable image upload and processing
+
+### V9
+- Introduced cat profile management
+- Support for cat photo uploads
+- AI-generated dietary recommendations
+- Personalized health suggestions
+- Improved data organization
+
+### V10
+- Multi-user account system
+- User registration and authentication
+- SQLite database integration
+- User profile management
+- Avatar uploads
+- Emergency contact information
+- API configuration support
+
+### V11
+- Multi-cat management
+- AI litter box monitoring
+- Entry and exit detection with AI feedback
+- Gemini-powered AI assistant
+- Health report generation
+- Improved history filtering and management
+- Modernized user interface
+- Enhanced performance and stability
+
+### V11.20
+The latest release focuses on reliability and user experience.
+
+Major improvements include:
+- Rebuilt global location management system
+- Local-first region database architecture
+- Chinese localization for countries and regions
+- Three-level country, state/province, and city selector
+- Background database updates
+- Offline fallback support
+- Faster page loading
+- Better timeout and error handling
+- Manual city input when region data is unavailable
+
+---
+
+## Overall Progress
+
+Cat AI has grown from a simple image classification prototype into a full-stack AI-powered pet healthcare platform featuring:
+
+- AI health analysis
+- Multi-user authentication
+- Multi-cat profile management
+- Smart litter box monitoring
+- AI dietary recommendations
+- Health history tracking
+- PDF health reports
+- Personalized user profiles
+- Global localization support
+- Modern web application architecture
+- Continuous performance and reliability improvements
